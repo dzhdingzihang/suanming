@@ -1,0 +1,143 @@
+<!doctype html>
+<html lang="zh-CN">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>玄机流年 · 八字年度运势</title>
+    <link rel="stylesheet" href="./styles.css" />
+  </head>
+  <body>
+    <main class="page-shell">
+      <section class="hero">
+        <div class="hero-copy">
+          <p class="eyebrow">2026 丙午流年 · 虚空起盘</p>
+          <h1><span>金光照命局</span><span>堪破一年流转</span></h1>
+          <p class="hero-text">
+            以出生时间为锚，推演四柱干支、五行旺衰与流年流月。科技只能计算轨迹，命盘揭示你真正要穿过的风。
+          </p>
+          <div class="trust-row">
+            <span>节气换月</span>
+            <span>四柱起局</span>
+            <span>金光命盘</span>
+          </div>
+        </div>
+
+        <form class="birth-form" id="birthForm">
+          <div class="form-title">
+            <strong>填写生辰</strong>
+            <span>信息越完整，推演越细</span>
+          </div>
+          <label>
+            出生日期
+            <input type="hidden" id="birthDate" required />
+            <div class="date-picker" id="birthDatePicker">
+              <select id="birthYear" aria-label="出生年份"></select>
+              <select id="birthMonth" aria-label="出生月份"></select>
+              <select id="birthDay" aria-label="出生日期"></select>
+            </div>
+          </label>
+
+          <label>
+            出生小时
+            <select id="birthHour">
+              <option value="">未知 / 暂不填写</option>
+            </select>
+          </label>
+
+          <label>
+            出生城市
+            <input id="birthCity" placeholder="手动输入城市，例如：杭州" autocomplete="off" required />
+          </label>
+
+          <button type="submit">开始起盘</button>
+        </form>
+      </section>
+
+      <section class="loading-panel hidden" id="loadingPanel" aria-live="polite">
+        <div class="compass">
+          <i></i>
+          <b>乾</b>
+          <b>坤</b>
+          <b>坎</b>
+          <b>离</b>
+        </div>
+        <div>
+          <p class="eyebrow">正在起盘</p>
+          <h2 id="loadingText">校验出生节气，推演四柱命局</h2>
+          <div class="loading-steps">
+            <span>排年柱</span>
+            <span>定月令</span>
+            <span>取日主</span>
+            <span>观流年</span>
+          </div>
+        </div>
+      </section>
+
+      <section class="result hidden" id="result">
+        <div class="result-header">
+          <div>
+            <p class="eyebrow" id="profileLine"></p>
+            <h2 id="resultTitle">你的 2026 年运势</h2>
+          </div>
+          <div class="result-actions">
+            <span class="year-pill">丙午年</span>
+            <button class="ghost-button" type="button" id="downloadReport">下载长图</button>
+          </div>
+        </div>
+
+        <section class="score-panel">
+          <div class="score-orb">
+            <span id="annualScore">88</span>
+            <small>年度运势</small>
+          </div>
+          <div>
+            <p class="eyebrow">年度总览</p>
+            <h3 id="annualPercentile">超过中国 86% 的人</h3>
+            <p id="annualNarrative"></p>
+          </div>
+        </section>
+
+        <div class="bazi-grid" id="baziGrid"></div>
+
+        <section class="insight-band">
+          <div>
+            <h3>五行侧写</h3>
+            <p id="elementSummary"></p>
+          </div>
+          <div class="element-bars" id="elementBars"></div>
+        </section>
+
+        <section class="annual-detail">
+          <p class="eyebrow">流年断语</p>
+          <h3>2026 年整体说明</h3>
+          <p id="annualDetail"></p>
+        </section>
+
+        <section>
+          <div class="section-title">
+            <h3>2026 分月运势</h3>
+            <p>每月以“本月主气”解释趋势，主气可理解为这一阶段更容易被触发的主题</p>
+          </div>
+          <div class="month-grid" id="monthGrid"></div>
+        </section>
+
+        <section class="summary-grid">
+          <article>
+            <h3>年度事业运势</h3>
+            <p id="careerSummary"></p>
+          </article>
+          <article>
+            <h3>年度财运</h3>
+            <p id="wealthSummary"></p>
+          </article>
+        </section>
+
+        <p class="notice">
+          本站内容基于传统干支、五行关系与固定节气近似规则生成，仅用于文化娱乐与自我观察参考，不构成决策建议。
+        </p>
+      </section>
+    </main>
+
+    <script src="./app.js"></script>
+  </body>
+</html>

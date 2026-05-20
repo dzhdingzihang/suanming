@@ -1,0 +1,6 @@
+services:
+  - type: static
+    name: suanming
+    buildCommand: "true"
+    staticPublishPath: .
+    autoDeployTrigger: commit

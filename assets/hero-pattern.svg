@@ -1,0 +1,61 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1600 900" role="img" aria-label="虚空金光命盘背景">
+  <defs>
+    <radialGradient id="void" cx="50%" cy="46%" r="72%">
+      <stop offset="0" stop-color="#27150a"/>
+      <stop offset="0.28" stop-color="#090b14"/>
+      <stop offset="0.72" stop-color="#04050b"/>
+      <stop offset="1" stop-color="#010207"/>
+    </radialGradient>
+    <radialGradient id="goldCore" cx="56%" cy="44%" r="30%">
+      <stop offset="0" stop-color="#fff1a6" stop-opacity="0.92"/>
+      <stop offset="0.16" stop-color="#d7a63f" stop-opacity="0.72"/>
+      <stop offset="0.46" stop-color="#9c5a19" stop-opacity="0.24"/>
+      <stop offset="1" stop-color="#05060b" stop-opacity="0"/>
+    </radialGradient>
+    <linearGradient id="beam" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0" stop-color="#fff6bf" stop-opacity="0"/>
+      <stop offset="0.45" stop-color="#f3c653" stop-opacity="0.3"/>
+      <stop offset="1" stop-color="#fff6bf" stop-opacity="0"/>
+    </linearGradient>
+    <pattern id="grid" width="80" height="80" patternUnits="userSpaceOnUse">
+      <path d="M80 0H0v80" fill="none" stroke="#f3c653" stroke-opacity="0.055"/>
+    </pattern>
+    <pattern id="stars" width="130" height="130" patternUnits="userSpaceOnUse">
+      <circle cx="18" cy="28" r="1.4" fill="#fff7ca" opacity="0.68"/>
+      <circle cx="84" cy="20" r="1" fill="#fff7ca" opacity="0.42"/>
+      <circle cx="112" cy="94" r="1.2" fill="#d7a63f" opacity="0.56"/>
+      <circle cx="44" cy="78" r="0.9" fill="#fff7ca" opacity="0.38"/>
+    </pattern>
+    <filter id="softGlow" x="-50%" y="-50%" width="200%" height="200%">
+      <feGaussianBlur stdDeviation="5" result="blur"/>
+      <feMerge>
+        <feMergeNode in="blur"/>
+        <feMergeNode in="SourceGraphic"/>
+      </feMerge>
+    </filter>
+  </defs>
+  <rect width="1600" height="900" fill="url(#void)"/>
+  <rect width="1600" height="900" fill="url(#grid)"/>
+  <rect width="1600" height="900" fill="url(#stars)"/>
+  <path d="M-160 880 1450 -120h320L140 980z" fill="url(#beam)" opacity="0.86"/>
+  <path d="M240 -140 1700 650v220L-80 20z" fill="url(#beam)" opacity="0.38"/>
+  <rect width="1600" height="900" fill="url(#goldCore)"/>
+  <g transform="translate(900 420)" fill="none" filter="url(#softGlow)">
+    <circle r="118" stroke="#fff0a6" stroke-opacity="0.88" stroke-width="1.4"/>
+    <circle r="188" stroke="#e8b947" stroke-opacity="0.58" stroke-width="1"/>
+    <circle r="274" stroke="#e8b947" stroke-opacity="0.32" stroke-width="1"/>
+    <circle r="354" stroke="#fff0a6" stroke-opacity="0.16" stroke-width="1"/>
+    <path d="M-354 0H354M0-354V354M-250-250 250 250M250-250-250 250" stroke="#fff0a6" stroke-opacity="0.32"/>
+    <path d="M0-274 237-137 237 137 0 274-237 137-237-137Z" stroke="#e8b947" stroke-opacity="0.55"/>
+    <path d="M0-188 163-94 163 94 0 188-163 94-163-94Z" stroke="#fff0a6" stroke-opacity="0.42"/>
+    <path d="M-98-98C-28-130 28-130 98-98M-98 98C-28 130 28 130 98 98" stroke="#fff0a6" stroke-opacity="0.36"/>
+  </g>
+  <g fill="#fff2aa" filter="url(#softGlow)">
+    <circle cx="900" cy="66" r="3.6" opacity="0.9"/>
+    <circle cx="900" cy="774" r="3.6" opacity="0.72"/>
+    <circle cx="546" cy="420" r="3.6" opacity="0.74"/>
+    <circle cx="1254" cy="420" r="3.6" opacity="0.92"/>
+    <circle cx="650" cy="170" r="2.8" opacity="0.7"/>
+    <circle cx="1150" cy="670" r="2.8" opacity="0.78"/>
+  </g>
+</svg>
