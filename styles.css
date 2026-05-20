@@ -40,7 +40,12 @@ body::before {
   pointer-events: none;
   content: "";
   background:
-    url("./assets/hero-pattern.svg") top center/1600px auto no-repeat,
+    radial-gradient(circle at 56% 36%, rgba(255, 241, 166, 0.38) 0 2px, transparent 3px),
+    radial-gradient(circle at 56% 36%, rgba(215, 166, 63, 0.34), transparent 18%),
+    conic-gradient(from 18deg at 56% 36%, transparent 0 13%, rgba(243, 198, 83, 0.16) 13% 15%, transparent 15% 100%),
+    repeating-radial-gradient(circle at 56% 36%, transparent 0 72px, rgba(243, 198, 83, 0.08) 73px 74px),
+    repeating-linear-gradient(0deg, transparent 0 79px, rgba(243, 198, 83, 0.035) 80px),
+    repeating-linear-gradient(90deg, transparent 0 79px, rgba(243, 198, 83, 0.035) 80px),
     radial-gradient(circle at center, transparent, rgba(0, 0, 0, 0.72) 72%);
   opacity: 0.52;
 }
@@ -70,8 +75,15 @@ select {
   border-radius: 28px;
   background:
     radial-gradient(circle at 72% 44%, rgba(255, 224, 118, 0.2), transparent 26%),
+    radial-gradient(circle at 68% 40%, rgba(255, 246, 191, 0.78) 0 2px, transparent 3px),
+    radial-gradient(circle at 68% 40%, rgba(240, 200, 90, 0.34), transparent 21%),
+    conic-gradient(from 22deg at 68% 40%, transparent 0 10%, rgba(240, 200, 90, 0.18) 10% 12%, transparent 12% 32%, rgba(110, 224, 195, 0.1) 32% 33%, transparent 33% 100%),
+    repeating-radial-gradient(circle at 68% 40%, transparent 0 54px, rgba(240, 200, 90, 0.1) 55px 56px),
+    linear-gradient(24deg, transparent 0 36%, rgba(240, 200, 90, 0.16) 36% 38%, transparent 38% 100%),
+    linear-gradient(135deg, transparent 0 62%, rgba(255, 245, 184, 0.09) 62% 63%, transparent 63% 100%),
     linear-gradient(115deg, rgba(7, 8, 15, 0.02), rgba(5, 6, 11, 0.82)),
-    url("./assets/hero-pattern.svg") center/cover;
+    repeating-linear-gradient(90deg, rgba(240, 200, 90, 0.04) 0 1px, transparent 1px 82px),
+    #05060b;
   box-shadow:
     0 0 0 1px rgba(240, 200, 90, 0.12),
     0 36px 120px rgba(0, 0, 0, 0.58),
@@ -280,7 +292,10 @@ button:disabled {
   border-radius: 24px;
   background:
     linear-gradient(135deg, rgba(5, 6, 11, 0.94), rgba(42, 27, 9, 0.84)),
-    url("./assets/hero-pattern.svg") center/cover;
+    radial-gradient(circle at 28% 48%, rgba(240, 200, 90, 0.26), transparent 20%),
+    repeating-radial-gradient(circle at 28% 48%, transparent 0 42px, rgba(240, 200, 90, 0.14) 43px 44px),
+    conic-gradient(from 35deg at 28% 48%, transparent 0 18%, rgba(240, 200, 90, 0.22) 18% 20%, transparent 20% 100%),
+    #05060b;
   box-shadow: var(--shadow);
 }
 
