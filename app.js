@@ -531,6 +531,7 @@ function startReading() {
   formButton.disabled = true;
   formButton.textContent = "起盘中...";
   resultPanel.classList.add("hidden");
+  resultPanel.classList.remove("is-ready");
   loadingPanel.classList.remove("hidden");
   loadingPanel.scrollIntoView({ behavior: "smooth", block: "center" });
   loadingText.textContent = loadingMessages[0];
@@ -550,7 +551,6 @@ function startReading() {
 }
 
 function renderReading({ birthDate, birthHour, birthCity }) {
-
   const date = parseDate(birthDate);
   const yearPillar = getYearPillar(date);
   const monthPillar = getMonthPillar(date, yearPillar);
@@ -575,8 +575,19 @@ function renderReading({ birthDate, birthHour, birthCity }) {
   document.querySelector("#careerSummary").textContent = summaries.careerSummary;
   document.querySelector("#wealthSummary").textContent = summaries.wealthSummary;
 
-  document.querySelector("#result").classList.remove("hidden");
-  document.querySelector("#result").scrollIntoView({ behavior: "smooth", block: "start" });
+  revealResultPanel();
+}
+
+function revealResultPanel() {
+  const result = document.querySelector("#result");
+
+  result.classList.remove("hidden");
+  result.classList.remove("is-ready");
+
+  window.requestAnimationFrame(() => {
+    result.classList.add("is-ready");
+    result.scrollIntoView({ behavior: "smooth", block: "start" });
+  });
 }
 
 async function downloadReportImage() {
