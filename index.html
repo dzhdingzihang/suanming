@@ -4,6 +4,7 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>玄机流年 · 八字年度运势</title>
+    <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='14' fill='%2305060b'/%3E%3Ccircle cx='32' cy='32' r='18' fill='none' stroke='%23f0c85a' stroke-width='4'/%3E%3Ccircle cx='32' cy='32' r='5' fill='%23fff0a6'/%3E%3C/svg%3E" />
     <link rel="stylesheet" href="./styles.css" />
   </head>
   <body>
@@ -39,9 +40,23 @@
 
           <label>
             出生小时
-            <select id="birthHour">
-              <option value="">未知 / 暂不填写</option>
+            <select id="birthHour" required>
+              <option value="">请选择出生小时</option>
             </select>
+          </label>
+
+          <label>
+            性别
+            <div class="gender-toggle" role="radiogroup" aria-label="性别">
+              <label>
+                <input type="radio" name="birthGender" value="男" checked />
+                <span>男</span>
+              </label>
+              <label>
+                <input type="radio" name="birthGender" value="女" />
+                <span>女</span>
+              </label>
+            </div>
           </label>
 
           <label>
@@ -99,6 +114,48 @@
 
         <div class="bazi-grid" id="baziGrid"></div>
 
+        <section class="ziwei-panel">
+          <div class="section-title">
+            <div>
+              <p class="eyebrow">紫微斗数命盘</p>
+              <h3 id="ziweiTitle">十二宫精排</h3>
+            </div>
+            <p id="ziweiMeta"></p>
+          </div>
+          <div class="ziwei-chart" id="ziweiChart"></div>
+        </section>
+
+        <section class="summary-grid ziwei-summary-grid">
+          <article>
+            <h3>命宫底色</h3>
+            <p id="lifePalaceSummary"></p>
+          </article>
+          <article>
+            <h3>事业财帛</h3>
+            <p id="careerWealthSummary"></p>
+          </article>
+        </section>
+
+        <section class="topic-reading-panel">
+          <div class="section-title">
+            <div>
+              <p class="eyebrow">分类详批</p>
+              <h3>按人生主题拆解命盘</h3>
+            </div>
+            <p>学习命理解读师的咨询结构，并参考 Oracle 的主题入口：先定调，再落到现实建议。</p>
+          </div>
+          <div class="topic-tabs" id="topicTabs" role="tablist"></div>
+          <div class="topic-grid" id="topicGrid"></div>
+        </section>
+
+        <section class="calibration-panel">
+          <div>
+            <p class="eyebrow">校准问答</p>
+            <h3>让命盘从“初判”走向“贴身”</h3>
+          </div>
+          <div class="calibration-list" id="calibrationQuestions"></div>
+        </section>
+
         <section class="insight-band">
           <div>
             <h3>五行侧写</h3>
@@ -133,11 +190,11 @@
         </section>
 
         <p class="notice">
-          本站内容基于传统干支、五行关系与固定节气近似规则生成，仅用于文化娱乐与自我观察参考，不构成决策建议。
+          本站内容基于紫微斗数、干支与五行关系生成，仅用于文化娱乐与自我观察参考，不构成医疗、投资、法律或人生重大决策建议。部分知识结构参考 learnwithu/mingli-master 与 Renhuai123/ziwei-doushu 开源项目。
         </p>
       </section>
     </main>
 
-    <script src="./app.js"></script>
+    <script type="module" src="./app.js"></script>
   </body>
 </html>

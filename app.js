@@ -1,3 +1,13 @@
+import { astro } from "https://esm.sh/iztro@2.5.8";
+
+astro.config({
+  yearDivide: "normal",
+  horoscopeDivide: "normal",
+  ageDivide: "normal",
+  dayDivide: "forward",
+  algorithm: "zhongzhou",
+});
+
 const stems = ["甲", "乙", "丙", "丁", "戊", "己", "庚", "辛", "壬", "癸"];
 const branches = ["子", "丑", "寅", "卯", "辰", "巳", "午", "未", "申", "酉", "戌", "亥"];
 
@@ -79,9 +89,9 @@ const monthNamesCn = [
 
 const loadingMessages = [
   "校验出生节气，推演四柱命局",
+  "调用紫微排盘引擎，安命宫与身宫",
+  "排布十二宫星曜，标记四化飞星",
   "换算年柱月令，查看五行旺衰",
-  "取日主为命局核心，观喜忌流转",
-  "引入 2026 丙午流年，排布十二流月",
   "归纳事业财运，生成年度断语",
 ];
 
@@ -148,6 +158,96 @@ const solarMonthStarts = [
 ];
 
 const monthNames = ["1月", "2月", "3月", "4月", "5月", "6月", "7月", "8月", "9月", "10月", "11月", "12月"];
+const palacePositions = {
+  巳: [0, 0],
+  午: [0, 1],
+  未: [0, 2],
+  申: [0, 3],
+  辰: [1, 0],
+  酉: [1, 3],
+  卯: [2, 0],
+  戌: [2, 3],
+  寅: [3, 0],
+  丑: [3, 1],
+  子: [3, 2],
+  亥: [3, 3],
+};
+const majorStarInsights = {
+  紫微: "紫微坐命，重格局、秩序与掌控力，适合在复杂局面里担责定调。",
+  天机: "天机坐命，思维灵活，善谋划与迭代，人生常因选择和变化打开空间。",
+  太阳: "太阳坐命，重表达、名望与承担，越被看见越容易激活能量。",
+  武曲: "武曲坐命，重效率、资源与执行，适合用硬结果建立安全感。",
+  天同: "天同坐命，性情温和，有福气与人缘，但要避免过度求安逸。",
+  廉贞: "廉贞坐命，感受力强，也有锋芒，适合在规则、人际和审美里找到位置。",
+  天府: "天府坐命，稳重能守，擅长管理资源，越长期主义越显优势。",
+  太阴: "太阴坐命，细腻内敛，重安全感与积累，适合深耕专业、资产和审美。",
+  贪狼: "贪狼坐命，才艺、欲望与社交力强，关键是把兴趣转成长期能力。",
+  巨门: "巨门坐命，口才与洞察强，适合研究、表达和辨析，但需慎防口舌是非。",
+  天相: "天相坐命，重公平与协作，擅长辅佐、协调与制度化推进。",
+  天梁: "天梁坐命，带荫护与原则感，适合服务、专业判断和化解问题。",
+  七杀: "七杀坐命，开创和决断力强，越在变化与压力中越能显示魄力。",
+  破军: "破军坐命，破旧立新，适合转型、创新和攻坚，但要管理消耗。",
+};
+const palaceFocus = {
+  命宫: "人格底色",
+  命: "人格底色",
+  兄弟宫: "同辈助力",
+  兄弟: "同辈助力",
+  夫妻宫: "亲密关系",
+  夫妻: "亲密关系",
+  子女宫: "传承创造",
+  子女: "传承创造",
+  财帛宫: "现金资源",
+  财帛: "现金资源",
+  疾厄宫: "身心状态",
+  疾厄: "身心状态",
+  迁移宫: "外部机会",
+  迁移: "外部机会",
+  交友宫: "圈层合作",
+  交友: "圈层合作",
+  官禄宫: "事业路径",
+  官禄: "事业路径",
+  田宅宫: "资产根基",
+  田宅: "资产根基",
+  福德宫: "精神能量",
+  福德: "精神能量",
+  父母宫: "长辈背景",
+  父母: "长辈背景",
+};
+const sihuaTone = {
+  禄: "资源变多，事情更容易顺手，适合把握机会但别贪多。",
+  权: "主导权变强，责任也会变重，适合争取话语权。",
+  科: "名声、贵人与专业认可被点亮，适合展示成果。",
+  忌: "执着和消耗会变明显，越在意越要先稳住节奏。",
+};
+const topicDefinitions = [
+  { key: "overview", label: "命格", palace: "命宫", title: "命盘底色", angle: "先看命宫主星，再看身宫和三方四正，判断这个人底层靠什么运行。" },
+  { key: "personality", label: "性格", palace: "命宫", title: "性格模式", angle: "性格不是标签，而是你遇事时最自然的反应路径。" },
+  { key: "career", label: "事业", palace: "官禄宫", title: "事业路线", angle: "官禄宫看职业路径、权责位置，以及你适合靠什么建立社会价值。" },
+  { key: "wealth", label: "财运", palace: "财帛宫", title: "财富模式", angle: "财帛宫看钱从哪里来、怎么流动，以及守财还是开源更重要。" },
+  { key: "love", label: "感情", palace: "夫妻宫", title: "亲密关系", angle: "夫妻宫看关系里的需求、磨合点和适合的相处方式。" },
+  { key: "health", label: "健康", palace: "疾厄宫", title: "身心提醒", angle: "疾厄宫只做倾向提示，具体身体问题仍应以体检和医生意见为准。" },
+  { key: "parents", label: "长辈", palace: "父母宫", title: "长辈缘分", angle: "父母宫看原生支持、长辈资源，也看文书契约和上级关系。" },
+  { key: "home", label: "家宅", palace: "田宅宫", title: "资产根基", angle: "田宅宫看居住稳定感、不动产倾向和长期积累能力。" },
+  { key: "move", label: "迁移", palace: "迁移宫", title: "外部机会", angle: "迁移宫看离开熟悉环境后的机会，适合在原地深耕还是向外发展。" },
+  { key: "friends", label: "人际", palace: "交友宫", title: "圈层合作", angle: "交友宫看朋友、团队、客户与合作对象的质量。" },
+  { key: "children", label: "子女", palace: "子女宫", title: "创造传承", angle: "子女宫既看子女缘，也看作品、下属、学生与长期创造。" },
+  { key: "spirit", label: "福德", palace: "福德宫", title: "精神能量", angle: "福德宫看内心是否松弛、精神续航，以及快乐来自哪里。" },
+];
+const topicAdvice = {
+  overview: "先承认自己的主星底色，不急着变成别人。优势要放大，短板用制度和环境来补。",
+  personality: "遇到反复卡住的事，先看是主星优势用过头，还是身宫课题还没接住。",
+  career: "事业不要只看热闹机会，要看官禄宫能不能承载长期权责。",
+  wealth: "财运的重点不是一笔进账，而是现金流、风险边界和复利节奏。",
+  love: "感情里最忌把命盘当定罪书，它更适合用来理解彼此需求。",
+  health: "健康只做生活方式提醒：睡眠、压力、饮食、运动先稳住。",
+  parents: "长辈和上级相关议题，适合多留书面确认，少靠情绪判断。",
+  home: "家宅与资产宜慢决策，先看现金流和长期稳定感。",
+  move: "向外发展前先准备作品、履历、资源清单，机会来时才接得住。",
+  friends: "圈层不是越大越好，关键是互信、边界和可持续合作。",
+  children: "创造类事务要给时间发酵，别用短期反馈否定长期作品。",
+  spirit: "精神能量不足时，不宜硬冲大事，先恢复秩序和节律。",
+};
 
 function mod(value, length) {
   return ((value % length) + length) % length;
@@ -223,6 +323,272 @@ function getHourPillar(hour, dayPillar) {
   const stemIndex = (mod(dayStemIndex, 5) * 2 + branchIndex) % 10;
 
   return getGanZhi(stemIndex, branchIndex);
+}
+
+function hourToTimeIndex(hour) {
+  return Math.floor(((Number(hour) + 1) % 24) / 2);
+}
+
+function starName(star) {
+  return String(star?.name || "").replace("星", "");
+}
+
+function formatStar(star) {
+  const name = starName(star);
+  const brightness = star?.brightness ? `<small>${star.brightness}</small>` : "";
+  const mutagen = star?.mutagen ? `<em>${star.mutagen}</em>` : "";
+  return `<span class="star-tag">${name}${brightness}${mutagen}</span>`;
+}
+
+function getZiweiChart(birthDate, birthHour, birthGender) {
+  const [year, month, day] = birthDate.split("-").map(Number);
+  const dateText = `${year}-${month}-${day}`;
+  return astro.bySolar(dateText, hourToTimeIndex(birthHour), birthGender, true);
+}
+
+function getPalace(chart, name) {
+  const shortName = name.replace(/宫$/, "");
+  return chart.palaces.find((palace) => {
+    const palaceName = String(palace.name);
+    return palaceName === name || palaceName === shortName || `${palaceName}宫` === name;
+  });
+}
+
+function palaceDisplayName(palace, fallback) {
+  const name = String(palace?.name || fallback || "");
+  return name.endsWith("宫") ? name : `${name}宫`;
+}
+
+function mainStarsText(palace) {
+  const names = (palace?.majorStars || []).map(starName).filter(Boolean);
+  return names.length ? names.join("、") : "无主星，借对宫气势成局";
+}
+
+function palaceStars(palace) {
+  return {
+    major: (palace?.majorStars || []).map(starName).filter(Boolean),
+    minor: (palace?.minorStars || []).map(starName).filter(Boolean),
+    mutagens: [...(palace?.majorStars || []), ...(palace?.minorStars || [])]
+      .filter((star) => star.mutagen)
+      .map((star) => ({ star: starName(star), sihua: star.mutagen })),
+  };
+}
+
+function oppositePalace(chart, palace) {
+  if (!palace) return null;
+  const index = chart.palaces.findIndex((item) => item === palace);
+  if (index < 0) return null;
+  return chart.palaces[(index + 6) % 12];
+}
+
+function palaceSentence(palace, fallback) {
+  const displayName = palaceDisplayName(palace, fallback);
+  const mainStars = (palace?.majorStars || []).map(starName).filter(Boolean);
+  if (!mainStars.length) {
+    return `${displayName}无主星，判断时需借对宫与三方四正，适合把外部反馈纳入决策。`;
+  }
+
+  const first = mainStars[0];
+  const insight = majorStarInsights[first] || `${first}坐守${displayName}，这部分人生主题会被明显放大。`;
+  const mutagens = [...(palace.majorStars || []), ...(palace.minorStars || [])]
+    .filter((star) => star.mutagen)
+    .map((star) => `${starName(star)}化${star.mutagen}`)
+    .join("、");
+  return `${displayName}主星为${mainStars.join("、")}。${insight}${mutagens ? ` 本宫见${mutagens}，说明这一主题在今年尤其容易被事件触发。` : ""}`;
+}
+
+function buildZiweiSummaries(chart) {
+  const life = getPalace(chart, "命宫");
+  const body = chart.palaces.find((palace) => palace.isBodyPalace);
+  const career = getPalace(chart, "官禄宫");
+  const wealth = getPalace(chart, "财帛宫");
+  const bodyName = palaceDisplayName(body, "未知宫位");
+  const lifeSummary = `${palaceSentence(life, "命宫")}身宫落在${bodyName}，代表后天发力点更偏向${palaceFocus[body?.name] || "现实行动"}。命主${chart.soul}、身主${chart.body}，五行局为${chart.fiveElementsClass}，先天盘更适合从“主星结构 + 四化引动”来看长期命题。`;
+  const careerWealthSummary = `${palaceSentence(career, "官禄宫")} ${palaceSentence(wealth, "财帛宫")}事业看官禄，财运看财帛；若两宫同时见禄、权、科，宜主动争取资源，若见忌，则先处理合同、现金流与边界。`;
+  return { lifeSummary, careerWealthSummary };
+}
+
+function currentDecadal(chart, birthDate) {
+  const birthYear = Number(birthDate.slice(0, 4));
+  const age = new Date().getFullYear() - birthYear + 1;
+  const palace = chart.palaces.find((item) => {
+    const range = item.decadal?.range;
+    return range && age >= range[0] && age <= range[1];
+  });
+  return { age, palace };
+}
+
+function buildTopicReading(chart, topic, birthDate) {
+  const palace = getPalace(chart, topic.palace);
+  const displayName = palaceDisplayName(palace, topic.palace);
+  const stars = palaceStars(palace);
+  const borrowed = stars.major.length ? null : oppositePalace(chart, palace);
+  const borrowedStars = palaceStars(borrowed).major;
+  const mainText = stars.major.length ? stars.major.join("、") : `空宫，借对宫${borrowed ? palaceDisplayName(borrowed, "") : ""}${borrowedStars.join("、") || "气势"}`;
+  const firstStar = stars.major[0] || borrowedStars[0];
+  const starInsight = firstStar
+    ? majorStarInsights[firstStar] || `${firstStar}在此主题里会放大个人取向。`
+    : "这个主题更受环境、选择和阶段运势牵动，弹性较大。";
+  const mutagenText = stars.mutagens.length
+    ? stars.mutagens.map((item) => `${item.star}化${item.sihua}：${sihuaTone[item.sihua] || "主题被引动。"}`).join(" ")
+    : "本宫未见明显四化，判断时更重主星组合、三方四正与大限流年。";
+  const { age, palace: decadalPalace } = currentDecadal(chart, birthDate);
+  const decadalText = decadalPalace
+    ? `当前虚岁约${age}，大限落在${palaceDisplayName(decadalPalace, "")}，这十年的课题偏向${palaceFocus[decadalPalace.name] || "阶段转换"}。`
+    : "";
+
+  return {
+    ...topic,
+    palaceName: displayName,
+    badge: mainText,
+    thesis: `${displayName}主星为${mainText}。${topic.angle}`,
+    body: `${starInsight} ${mutagenText} ${decadalText}`,
+    advice: topicAdvice[topic.key],
+    confidence: stars.major.length ? 72 : 66,
+  };
+}
+
+function renderTopicReadings(chart, birthDate) {
+  const readings = topicDefinitions.map((topic) => buildTopicReading(chart, topic, birthDate));
+  const tabs = document.querySelector("#topicTabs");
+  const grid = document.querySelector("#topicGrid");
+
+  tabs.innerHTML = readings
+    .map(
+      (item, index) => `
+        <button class="${index === 0 ? "is-active" : ""}" type="button" data-topic="${item.key}" role="tab">
+          ${item.label}
+        </button>
+      `
+    )
+    .join("");
+
+  grid.innerHTML = readings
+    .map(
+      (item, index) => `
+        <article class="topic-card ${index >= 6 ? "is-secondary" : ""}" data-topic-card="${item.key}">
+          <div class="topic-card-head">
+            <span>${item.label}</span>
+            <b>${item.palaceName}</b>
+          </div>
+          <h4>${item.title}</h4>
+          <strong>${item.badge}</strong>
+          <p>${item.thesis}</p>
+          <p>${item.body}</p>
+          <div class="topic-advice">${item.advice}</div>
+          <div class="confidence-row">
+            <span>初判贴合度</span>
+            <i><b style="width: ${item.confidence}%"></b></i>
+            <em>${item.confidence}%</em>
+          </div>
+        </article>
+      `
+    )
+    .join("");
+
+  tabs.querySelectorAll("button").forEach((button) => {
+    button.addEventListener("click", () => {
+      tabs.querySelectorAll("button").forEach((item) => item.classList.remove("is-active"));
+      button.classList.add("is-active");
+      const card = grid.querySelector(`[data-topic-card="${button.dataset.topic}"]`);
+      card?.scrollIntoView({ behavior: "smooth", block: "center" });
+    });
+  });
+}
+
+function renderCalibrationQuestions(chart) {
+  const life = getPalace(chart, "命宫");
+  const career = getPalace(chart, "官禄宫");
+  const wealth = getPalace(chart, "财帛宫");
+  const questions = [
+    `你的工作更接近${mainStarsText(career)}对应的“专业判断/服务协调”，还是更偏销售、管理、技术或内容表达？`,
+    `过去 1-2 年最明显的压力，是钱、工作位置、关系，还是身体精力？`,
+    `你和长辈或上级的关系，是支持多，还是要求和边界感更强？`,
+    `你更像${mainStarsText(life)}坐命的外显路线，还是身宫课题在现实里更明显？`,
+    `财务上你目前更困扰开源，还是守财、预算、合伙边界？`,
+  ];
+
+  if (!mainStarsText(wealth).includes("无主星")) {
+    questions[4] = `财帛宫见${mainStarsText(wealth)}，你的收入更像稳定积累，还是靠项目、人脉、专业爆发？`;
+  }
+
+  document.querySelector("#calibrationQuestions").innerHTML = questions
+    .map((question, index) => `<article><span>${String(index + 1).padStart(2, "0")}</span><p>${question}</p></article>`)
+    .join("");
+}
+
+function renderZiwei(chart, birthDate, birthGender) {
+  const chartGrid = document.querySelector("#ziweiChart");
+  const grid = Array.from({ length: 4 }, () => Array(4).fill(null));
+
+  chart.palaces.forEach((palace) => {
+    const position = palacePositions[palace.earthlyBranch];
+    if (position) {
+      grid[position[0]][position[1]] = palace;
+    }
+  });
+
+  document.querySelector("#ziweiTitle").textContent = `${mainStarsText(getPalace(chart, "命宫"))}坐命`;
+  document.querySelector("#ziweiMeta").textContent = `${birthDate} · ${birthGender}命 · ${chart.lunarDate} · ${chart.chineseDate}`;
+
+  chartGrid.innerHTML = grid
+    .map((row, rowIndex) =>
+      row
+        .map((palace, columnIndex) => {
+          if (!palace && rowIndex > 0 && rowIndex < 3 && columnIndex > 0 && columnIndex < 3) {
+            if (rowIndex === 1 && columnIndex === 1) {
+              return `
+                <div class="ziwei-center" style="grid-row: 2 / span 2; grid-column: 2 / span 2;">
+                  <span>紫微斗数</span>
+                  <strong>${chart.fiveElementsClass}</strong>
+                  <p>命主 ${chart.soul} · 身主 ${chart.body}</p>
+                  <p>${chart.time} ${chart.timeRange}</p>
+                </div>
+              `;
+            }
+            return "";
+          }
+          if (!palace) return "<div></div>";
+
+          const majorStars = palace.majorStars?.length
+            ? palace.majorStars.map(formatStar).join("")
+            : `<span class="empty-star">借对宫</span>`;
+          const minorStars = (palace.minorStars || []).slice(0, 4).map(formatStar).join("");
+          const adjectiveStars = (palace.adjectiveStars || [])
+            .slice(0, 3)
+            .map((star) => `<span>${starName(star)}</span>`)
+            .join("");
+          const decadal = palace.decadal?.range ? `${palace.decadal.range[0]}-${palace.decadal.range[1]}` : "";
+          const tags = [
+            palace.name === "命宫" ? "命" : "",
+            palace.isBodyPalace ? "身" : "",
+          ].filter(Boolean);
+
+          return `
+            <article class="ziwei-palace ${palace.name === "命宫" ? "is-life" : ""} ${palace.isBodyPalace ? "is-body" : ""}">
+              <div class="palace-head">
+                <span>${palace.heavenlyStem}${palace.earthlyBranch}</span>
+                <b>${palace.name}</b>
+              </div>
+              <div class="palace-stars major-stars">${majorStars}</div>
+              <div class="palace-stars minor-stars">${minorStars}</div>
+              <div class="adjective-stars">${adjectiveStars}</div>
+              <div class="palace-foot">
+                <span>${decadal ? `${decadal}岁` : ""}</span>
+                <em>${tags.join(" / ")}</em>
+              </div>
+            </article>
+          `;
+        })
+        .join("")
+    )
+    .join("");
+
+  const summaries = buildZiweiSummaries(chart);
+  document.querySelector("#lifePalaceSummary").textContent = summaries.lifeSummary;
+  document.querySelector("#careerWealthSummary").textContent = summaries.careerWealthSummary;
+  renderTopicReadings(chart, birthDate);
+  renderCalibrationQuestions(chart);
 }
 
 function collectElements(pillars) {
@@ -519,8 +885,9 @@ function startReading() {
   const birthDate = document.querySelector("#birthDate").value;
   const birthHour = document.querySelector("#birthHour").value;
   const birthCity = document.querySelector("#birthCity").value.trim();
+  const birthGender = document.querySelector('input[name="birthGender"]:checked').value;
 
-  if (!birthDate || !birthCity) return;
+  if (!birthDate || !birthHour || !birthCity) return;
 
   const formButton = document.querySelector("#birthForm button");
   const loadingPanel = document.querySelector("#loadingPanel");
@@ -543,19 +910,20 @@ function startReading() {
 
   window.setTimeout(() => {
     window.clearInterval(timer);
-    renderReading({ birthDate, birthHour, birthCity });
+    renderReading({ birthDate, birthHour, birthCity, birthGender });
     loadingPanel.classList.add("hidden");
     formButton.disabled = false;
     formButton.textContent = "重新起盘";
   }, 2300);
 }
 
-function renderReading({ birthDate, birthHour, birthCity }) {
+function renderReading({ birthDate, birthHour, birthCity, birthGender }) {
   const date = parseDate(birthDate);
   const yearPillar = getYearPillar(date);
   const monthPillar = getMonthPillar(date, yearPillar);
   const dayPillar = getDayPillar(date);
   const hourPillar = getHourPillar(birthHour, dayPillar);
+  const ziweiChart = getZiweiChart(birthDate, birthHour, birthGender);
   const pillars = [yearPillar, monthPillar, dayPillar, hourPillar];
   const counts = collectElements(pillars);
   const dayElement = stemElements[dayPillar.stem];
@@ -563,13 +931,14 @@ function renderReading({ birthDate, birthHour, birthCity }) {
   const { annualScore, percentile } = buildAnnualScore(months, counts);
   const summaries = buildSummaries(months, counts, dayElement, pillars, birthDate, birthCity, birthHour);
 
-  document.querySelector("#profileLine").textContent = `${birthCity}出生 · ${birthDate}${birthHour ? ` · ${birthHour}点` : " · 时辰未知"}`;
-  document.querySelector("#resultTitle").textContent = `${pillarText(dayPillar)}日主的 2026 年运势`;
+  document.querySelector("#profileLine").textContent = `${birthCity}出生 · ${birthDate} · ${birthHour}点 · ${birthGender}命`;
+  document.querySelector("#resultTitle").textContent = `${mainStarsText(getPalace(ziweiChart, "命宫"))}坐命的 2026 年运势`;
   document.querySelector("#annualScore").textContent = annualScore;
   document.querySelector("#annualPercentile").textContent = `超过中国 ${percentile}% 的人`;
   document.querySelector("#annualNarrative").textContent = summaries.annualNarrative;
   document.querySelector("#annualDetail").textContent = summaries.annualDetail;
   renderBazi(pillars);
+  renderZiwei(ziweiChart, birthDate, birthGender);
   renderElements(counts);
   renderMonths(months);
   document.querySelector("#careerSummary").textContent = summaries.careerSummary;
@@ -630,17 +999,31 @@ function buildReportCanvas() {
   const score = document.querySelector("#annualScore").textContent;
   const percentile = document.querySelector("#annualPercentile").textContent;
   const annualNarrative = document.querySelector("#annualNarrative").textContent;
+  const ziweiTitle = document.querySelector("#ziweiTitle").textContent;
+  const ziweiMeta = document.querySelector("#ziweiMeta").textContent;
+  const lifePalaceSummary = document.querySelector("#lifePalaceSummary").textContent;
+  const careerWealthSummary = document.querySelector("#careerWealthSummary").textContent;
   const annualDetail = document.querySelector("#annualDetail").textContent;
   const career = document.querySelector("#careerSummary").textContent;
   const wealth = document.querySelector("#wealthSummary").textContent;
   const bazi = Array.from(document.querySelectorAll(".pillar-card")).map((card) =>
     card.innerText.replace(/\n+/g, " · ")
   );
+  const topicReports = Array.from(document.querySelectorAll(".topic-card"))
+    .slice(0, 3)
+    .map((card) => card.innerText.replace(/\n+/g, " · "));
+  const calibration = Array.from(document.querySelectorAll(".calibration-list article"))
+    .slice(0, 3)
+    .map((card) => card.innerText.replace(/\n+/g, " "));
   const months = Array.from(document.querySelectorAll(".month-card")).map((card) =>
     card.innerText.replace(/\n+/g, " · ")
   );
   const sections = [
     { label: "年度总览", title: percentile, body: annualNarrative },
+    { label: "紫微命盘", title: ziweiTitle, body: `${ziweiMeta}。${lifePalaceSummary}` },
+    { label: "事业财帛", title: "官禄财帛同参", body: careerWealthSummary },
+    { label: "分类详批", title: "命格、性格、事业摘要", body: topicReports.join("。") },
+    { label: "校准问答", title: "从初判到贴身", body: calibration.join("。") },
     { label: "流年断语", title: "2026 年整体说明", body: annualDetail },
     { label: "年度事业运势", title: "动中求进，先压后开", body: career },
     { label: "年度财运", title: "财来有路，贵在守稳", body: wealth },
