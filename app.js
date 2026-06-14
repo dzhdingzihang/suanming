@@ -95,51 +95,51 @@ const loadingMessages = [
   "归纳事业财运，生成年度断语",
 ];
 
-const cities = [
-  "北京",
-  "上海",
-  "广州",
-  "深圳",
-  "杭州",
-  "南京",
-  "苏州",
-  "成都",
-  "重庆",
-  "武汉",
-  "西安",
-  "天津",
-  "长沙",
-  "郑州",
-  "青岛",
-  "厦门",
-  "福州",
-  "济南",
-  "合肥",
-  "宁波",
-  "无锡",
-  "佛山",
-  "东莞",
-  "珠海",
-  "南昌",
-  "昆明",
-  "贵阳",
-  "南宁",
-  "海口",
-  "太原",
-  "石家庄",
-  "沈阳",
-  "大连",
-  "长春",
-  "哈尔滨",
-  "呼和浩特",
-  "兰州",
-  "银川",
-  "西宁",
-  "乌鲁木齐",
-  "拉萨",
-  "香港",
-  "澳门",
-  "台北",
+const cityCatalog = [
+  { province: "北京", city: "北京", longitude: 116.41 },
+  { province: "上海", city: "上海", longitude: 121.47 },
+  { province: "广东", city: "广州", longitude: 113.26 },
+  { province: "广东", city: "深圳", longitude: 114.06 },
+  { province: "浙江", city: "杭州", longitude: 120.16 },
+  { province: "江苏", city: "南京", longitude: 118.8 },
+  { province: "江苏", city: "苏州", longitude: 120.59 },
+  { province: "四川", city: "成都", longitude: 104.07 },
+  { province: "重庆", city: "重庆", longitude: 106.55 },
+  { province: "湖北", city: "武汉", longitude: 114.31 },
+  { province: "陕西", city: "西安", longitude: 108.94 },
+  { province: "天津", city: "天津", longitude: 117.2 },
+  { province: "湖南", city: "长沙", longitude: 112.94 },
+  { province: "河南", city: "郑州", longitude: 113.63 },
+  { province: "山东", city: "青岛", longitude: 120.38 },
+  { province: "福建", city: "厦门", longitude: 118.09 },
+  { province: "福建", city: "福州", longitude: 119.3 },
+  { province: "山东", city: "济南", longitude: 117.12 },
+  { province: "安徽", city: "合肥", longitude: 117.23 },
+  { province: "浙江", city: "宁波", longitude: 121.55 },
+  { province: "江苏", city: "无锡", longitude: 120.31 },
+  { province: "广东", city: "佛山", longitude: 113.12 },
+  { province: "广东", city: "东莞", longitude: 113.75 },
+  { province: "广东", city: "珠海", longitude: 113.58 },
+  { province: "江西", city: "南昌", longitude: 115.86 },
+  { province: "云南", city: "昆明", longitude: 102.83 },
+  { province: "贵州", city: "贵阳", longitude: 106.63 },
+  { province: "广西", city: "南宁", longitude: 108.37 },
+  { province: "海南", city: "海口", longitude: 110.32 },
+  { province: "山西", city: "太原", longitude: 112.55 },
+  { province: "河北", city: "石家庄", longitude: 114.51 },
+  { province: "辽宁", city: "沈阳", longitude: 123.43 },
+  { province: "辽宁", city: "大连", longitude: 121.61 },
+  { province: "吉林", city: "长春", longitude: 125.32 },
+  { province: "黑龙江", city: "哈尔滨", longitude: 126.64 },
+  { province: "内蒙古", city: "呼和浩特", longitude: 111.75 },
+  { province: "甘肃", city: "兰州", longitude: 103.83 },
+  { province: "宁夏", city: "银川", longitude: 106.23 },
+  { province: "青海", city: "西宁", longitude: 101.78 },
+  { province: "新疆", city: "乌鲁木齐", longitude: 87.62 },
+  { province: "西藏", city: "拉萨", longitude: 91.13 },
+  { province: "香港", city: "香港", longitude: 114.17 },
+  { province: "澳门", city: "澳门", longitude: 113.54 },
+  { province: "台湾", city: "台北", longitude: 121.56 },
 ];
 
 const solarMonthStarts = [
@@ -226,11 +226,9 @@ const topicDefinitions = [
   { key: "career", label: "事业", palace: "官禄宫", title: "事业路线", angle: "官禄宫看职业路径、权责位置，以及你适合靠什么建立社会价值。" },
   { key: "wealth", label: "财运", palace: "财帛宫", title: "财富模式", angle: "财帛宫看钱从哪里来、怎么流动，以及守财还是开源更重要。" },
   { key: "love", label: "感情", palace: "夫妻宫", title: "亲密关系", angle: "夫妻宫看关系里的需求、磨合点和适合的相处方式。" },
-  { key: "health", label: "健康", palace: "疾厄宫", title: "身心提醒", angle: "疾厄宫只做倾向提示，具体身体问题仍应以体检和医生意见为准。" },
   { key: "parents", label: "长辈", palace: "父母宫", title: "长辈缘分", angle: "父母宫看原生支持、长辈资源，也看文书契约和上级关系。" },
-  { key: "home", label: "家宅", palace: "田宅宫", title: "资产根基", angle: "田宅宫看居住稳定感、不动产倾向和长期积累能力。" },
-  { key: "move", label: "迁移", palace: "迁移宫", title: "外部机会", angle: "迁移宫看离开熟悉环境后的机会，适合在原地深耕还是向外发展。" },
   { key: "friends", label: "人际", palace: "交友宫", title: "圈层合作", angle: "交友宫看朋友、团队、客户与合作对象的质量。" },
+  { key: "move", label: "迁移", palace: "迁移宫", title: "外部机会", angle: "迁移宫看离开熟悉环境后的机会，适合在原地深耕还是向外发展。" },
   { key: "children", label: "子女", palace: "子女宫", title: "创造传承", angle: "子女宫既看子女缘，也看作品、下属、学生与长期创造。" },
   { key: "spirit", label: "福德", palace: "福德宫", title: "精神能量", angle: "福德宫看内心是否松弛、精神续航，以及快乐来自哪里。" },
 ];
@@ -240,13 +238,64 @@ const topicAdvice = {
   career: "事业不要只看热闹机会，要看官禄宫能不能承载长期权责。",
   wealth: "财运的重点不是一笔进账，而是现金流、风险边界和复利节奏。",
   love: "感情里最忌把命盘当定罪书，它更适合用来理解彼此需求。",
-  health: "健康只做生活方式提醒：睡眠、压力、饮食、运动先稳住。",
   parents: "长辈和上级相关议题，适合多留书面确认，少靠情绪判断。",
-  home: "家宅与资产宜慢决策，先看现金流和长期稳定感。",
   move: "向外发展前先准备作品、履历、资源清单，机会来时才接得住。",
   friends: "圈层不是越大越好，关键是互信、边界和可持续合作。",
   children: "创造类事务要给时间发酵，别用短期反馈否定长期作品。",
   spirit: "精神能量不足时，不宜硬冲大事，先恢复秩序和节律。",
+};
+
+const topicDeepDives = {
+  overview: {
+    reality: "命格看的是一个人最底层的运行方式：遇到机会时先冲、先想、先守，还是先看关系与资源。命宫主星定气质，身宫看后天发力点，三方四正看资源从哪里来。若命宫星曜强，人生更适合主动定方向；若命宫空或煞曜多，则越要借环境、平台和制度来成事。",
+    risk: "命格最怕只看一个标签。主星好，不等于一路顺；见忌，也不等于命不好。真正要看的是优势有没有被用过头，以及当前大限是否把某个宫位的课题推到台前。",
+    action: "先把自己的主星优势写成能力清单，再把容易失衡的地方写成规则清单。能靠能力解决的事主动推进，容易情绪化或反复消耗的事交给流程、预算和边界。",
+  },
+  personality: {
+    reality: "性格不是一句“外向/内向”能讲完。命宫主星决定第一反应，身宫决定现实中越来越像什么，福德宫决定独处时能不能恢复能量。若主星偏刚，处理事情多半重效率和结果；若主星偏柔，感受、人情和安全感会更影响选择。",
+    risk: "性格优势一旦过量，就会变成阻力。果断过量会变成急躁，谨慎过量会变成拖延，体贴过量会变成边界不清，聪明过量会变成想太多。",
+    action: "遇到重大选择时，不只问“我想不想”，还要问“这是我的优势在发挥，还是我的惯性在重复”。能把惯性看清，性格就不是限制，而是可调度的工具。",
+  },
+  career: {
+    reality: "事业重点看官禄宫，同时要连财帛宫和迁移宫一起看。官禄宫代表职业位置与权责，财帛宫代表变现方式，迁移宫代表外部市场与机会。若官禄强，适合争取头衔、管理、专业权威；若迁移强，外地、跨平台、对外合作更容易打开局面。",
+    risk: "事业宫见强星但财帛弱，容易有职位、有责任，却未必马上有钱；财帛强但官禄不稳，则容易项目多、节奏乱、长期履历不够聚焦。",
+    action: "今年事业建议把“可被证明的成果”放在第一位：项目数据、作品、客户反馈、流程优化、团队贡献。少用情绪证明价值，多用结果争取位置。",
+  },
+  wealth: {
+    reality: "财运不是单看收入高低，而是钱从哪里来、流到哪里去、能不能留下。财帛宫看现金流，田宅宫看长期资产，福德宫看消费欲望和安全感。财星旺的人适合主动经营资源，但也更容易被机会诱惑。",
+    risk: "财帛见忌或煞，常见的问题不是没机会，而是合伙边界、冲动投入、回款慢、人情支出和账目不清。越是机会多，越要先看风险出口。",
+    action: "把年度财务拆成三层：稳定现金流、可试错投入、长期资产。任何投资或副业，在投入前先写清亏损上限、退出条件和回款周期。",
+  },
+  love: {
+    reality: "感情看夫妻宫，也要回看命宫的表达方式。夫妻宫不是简单看“有没有桃花”，而是看你在亲密关系里要安全感、尊重、陪伴、自由，还是共同成长。主星偏强，关系里容易有主导权议题；主星偏敏感，则更在意回应与细节。",
+    risk: "感情最容易把命盘误用成定罪书。宫位显示的是相处倾向，不是给谁贴错对标签。真正的风险多来自长期不沟通、期待没说清、边界不明和情绪累积。",
+    action: "关系里少猜，多确认。重要议题如金钱、家庭、时间分配、未来规划，要在情绪稳定时谈。若反复卡在同一类矛盾，先处理沟通机制，而不是急着判断缘分好坏。",
+  },
+  parents: {
+    reality: "长辈宫看父母、上级、师长、制度，也看文书合约。这个宫位强，往往容易得到资源、背书或规范训练；这个宫位压力大，则容易在期待、控制、责任和边界之间拉扯。",
+    risk: "父母宫的问题常不只发生在家庭，也会投射到职场上级、客户审核、合同流程里。若这里被四化引动，凡是证件、合同、审批、承诺，都不宜靠口头带过。",
+    action: "面对长辈或上级，建议把尊重和边界分开处理。情面可以给，关键事项要写清。能提前确认规则，就不要等冲突发生后再补救。",
+  },
+  friends: {
+    reality: "人际宫看朋友、同事、客户、合作伙伴和团队下属。它决定你适合深交少数人，还是通过大圈层获取机会。若交友宫吉，贵人常来自协作；若交友宫复杂，则人脉多但筛选成本高。",
+    risk: "人际最怕把热络当信任，把资源当关系。交友宫受冲时，容易出现合伙分歧、承诺落空、朋友借力不还、团队边界不清。",
+    action: "今年人际要重质量而非数量。合作前先小单测试，重要资源交换要留记录。真正好的关系，是能把边界说清之后依然舒服。",
+  },
+  move: {
+    reality: "迁移宫看外部世界：外地、出差、移居、换平台、互联网曝光、跨圈层机会。迁移强的人，离开熟悉环境后反而更容易被看见；迁移弱的人，则适合先把基本盘打稳，再谨慎扩张。",
+    risk: "迁移宫被忌或煞引动时，容易有交通奔波、计划变化、异地沟通误差、外部承诺落空。机会看似来自远方，但细节如果没核实，也容易变成消耗。",
+    action: "向外发展前，准备三样东西：可展示成果、可验证履历、可承接资源的时间表。不要为了“换环境”而换环境，要为了更高质量的机会移动。",
+  },
+  children: {
+    reality: "子女宫不只看亲子，也看作品、学生、下属、项目成果和创造力。它代表你能不能把想法生出来、养起来、交付出去。这个宫位强，适合长期创作、带人、培养项目；这个宫位弱，则需要更稳定的节奏和反馈机制。",
+    risk: "子女宫受冲时，常见表现是对成果太急、对下属或孩子期待过满、项目刚开始就想看到回报。越急，越容易破坏成长节奏。",
+    action: "把创造类事务当成长期养成。设阶段目标，不用一次定终局。亲子关系也一样，先建立稳定回应，再谈要求和成绩。",
+  },
+  spirit: {
+    reality: "福德宫看精神续航、快乐来源、独处质量和内在安全感。一个人外在再忙，如果福德宫能量不足，就容易出现疲惫、空心、睡不安稳、对未来没兴致。福德好，则能在压力中恢复秩序。",
+    risk: "福德宫最怕长期透支。明明身体还在撑，但心里已经不想动；明明机会很多，却没有力气选择。精神能量低时做重大决定，容易选错方向。",
+    action: "今年要把恢复力当成正事。固定睡眠、运动、独处、整理空间、减少无效社交，都是在补福德。心定下来，事业和财运才接得住。",
+  },
 };
 
 function mod(value, length) {
@@ -256,6 +305,60 @@ function mod(value, length) {
 function parseDate(value) {
   const [year, month, day] = value.split("-").map(Number);
   return new Date(Date.UTC(year, month - 1, day));
+}
+
+function formatDateValue(date) {
+  return `${date.getUTCFullYear()}-${String(date.getUTCMonth() + 1).padStart(2, "0")}-${String(date.getUTCDate()).padStart(2, "0")}`;
+}
+
+function normalizeCityName(value) {
+  return value
+    .trim()
+    .replace(/市|省|自治区|特别行政区|维吾尔|壮族|回族/g, "")
+    .replace(/\s+/g, "");
+}
+
+function resolveCity(input) {
+  const keyword = normalizeCityName(input);
+  if (!keyword) return null;
+  return (
+    cityCatalog.find((item) => normalizeCityName(item.city) === keyword) ||
+    cityCatalog.find((item) => normalizeCityName(item.city).includes(keyword) || keyword.includes(normalizeCityName(item.city))) ||
+    null
+  );
+}
+
+function dayOfYear(date) {
+  const start = Date.UTC(date.getUTCFullYear(), 0, 0);
+  return Math.floor((date.getTime() - start) / 86400000);
+}
+
+function equationOfTimeMinutes(date) {
+  const b = (2 * Math.PI * (dayOfYear(date) - 81)) / 364;
+  return 9.87 * Math.sin(2 * b) - 7.53 * Math.cos(b) - 1.5 * Math.sin(b);
+}
+
+function getTrueSolarBirth(birthDate, birthHour, cityInfo) {
+  const date = parseDate(birthDate);
+  const localMinutes = Number(birthHour) * 60 + 30;
+  const longitudeCorrection = cityInfo ? (cityInfo.longitude - 120) * 4 : 0;
+  const eot = equationOfTimeMinutes(date);
+  const totalCorrection = Math.round(longitudeCorrection + eot);
+  const solarTime = new Date(date.getTime() + (localMinutes + totalCorrection) * 60000);
+  const correctedHour = solarTime.getUTCHours();
+
+  return {
+    date: formatDateValue(solarTime),
+    hour: String(correctedHour),
+    displayTime: `${String(correctedHour).padStart(2, "0")}:${String(solarTime.getUTCMinutes()).padStart(2, "0")}`,
+    correctionMinutes: totalCorrection,
+    longitudeCorrection: Math.round(longitudeCorrection),
+    equationCorrection: Math.round(eot),
+  };
+}
+
+function cityLabel(cityInfo, fallback) {
+  return cityInfo ? `${cityInfo.province} · ${cityInfo.city}` : fallback;
 }
 
 function getGanZhi(stemIndex, branchIndex) {
@@ -418,6 +521,28 @@ function currentDecadal(chart, birthDate) {
   return { age, palace };
 }
 
+function palaceIndex(chart, palace) {
+  return chart.palaces.findIndex((item) => item === palace);
+}
+
+function relatedPalaces(chart, palace) {
+  const index = palaceIndex(chart, palace);
+  if (index < 0) return [];
+  return [0, 4, 8, 6]
+    .map((offset) => chart.palaces[(index + offset) % 12])
+    .filter(Boolean);
+}
+
+function relatedPalaceText(chart, palace) {
+  const related = relatedPalaces(chart, palace);
+  return related
+    .map((item, index) => {
+      const label = index === 0 ? "本宫" : index === 3 ? "对宫" : "三合";
+      return `${label}${palaceDisplayName(item, "")}见${mainStarsText(item)}`;
+    })
+    .join("；");
+}
+
 function buildTopicReading(chart, topic, birthDate) {
   const palace = getPalace(chart, topic.palace);
   const displayName = palaceDisplayName(palace, topic.palace);
@@ -436,6 +561,8 @@ function buildTopicReading(chart, topic, birthDate) {
   const decadalText = decadalPalace
     ? `当前虚岁约${age}，大限落在${palaceDisplayName(decadalPalace, "")}，这十年的课题偏向${palaceFocus[decadalPalace.name] || "阶段转换"}。`
     : "";
+  const deepDive = topicDeepDives[topic.key];
+  const relatedText = palace ? relatedPalaceText(chart, palace) : "";
 
   return {
     ...topic,
@@ -444,7 +571,12 @@ function buildTopicReading(chart, topic, birthDate) {
     thesis: `${displayName}主星为${mainText}。${topic.angle}`,
     body: `${starInsight} ${mutagenText} ${decadalText}`,
     advice: topicAdvice[topic.key],
-    confidence: stars.major.length ? 72 : 66,
+    sections: [
+      { title: "命盘依据", body: `${relatedText || `${displayName}需要结合三方四正判断`}。${stars.mutagens.length ? `本主题四化线索为：${stars.mutagens.map((item) => `${item.star}化${item.sihua}`).join("、")}。` : "本主题未见本宫四化，重点落在主星气质与三方四正联动。"}` },
+      { title: "现实表现", body: deepDive?.reality || topic.angle },
+      { title: "风险提醒", body: deepDive?.risk || "此主题要避免只看单一宫位，需结合现实选择与阶段环境。" },
+      { title: "行动建议", body: deepDive?.action || topicAdvice[topic.key] },
+    ],
   };
 }
 
@@ -452,6 +584,34 @@ function renderTopicReadings(chart, birthDate) {
   const readings = topicDefinitions.map((topic) => buildTopicReading(chart, topic, birthDate));
   const tabs = document.querySelector("#topicTabs");
   const grid = document.querySelector("#topicGrid");
+  const renderActive = (activeKey) => {
+    const item = readings.find((reading) => reading.key === activeKey) || readings[0];
+    grid.innerHTML = `
+      <article class="topic-card is-active-detail" data-topic-card="${item.key}">
+        <div class="topic-card-head">
+          <span>${item.label}</span>
+          <b>${item.palaceName}</b>
+        </div>
+        <h4>${item.title}</h4>
+        <strong>${item.badge}</strong>
+        <p>${item.thesis}</p>
+        <p>${item.body}</p>
+        <div class="topic-detail-list">
+          ${item.sections
+            .map(
+              (section) => `
+                <section>
+                  <h5>${section.title}</h5>
+                  <p>${section.body}</p>
+                </section>
+              `
+            )
+            .join("")}
+        </div>
+        <div class="topic-advice">${item.advice}</div>
+      </article>
+    `;
+  };
 
   tabs.innerHTML = readings
     .map(
@@ -463,35 +623,13 @@ function renderTopicReadings(chart, birthDate) {
     )
     .join("");
 
-  grid.innerHTML = readings
-    .map(
-      (item, index) => `
-        <article class="topic-card ${index >= 6 ? "is-secondary" : ""}" data-topic-card="${item.key}">
-          <div class="topic-card-head">
-            <span>${item.label}</span>
-            <b>${item.palaceName}</b>
-          </div>
-          <h4>${item.title}</h4>
-          <strong>${item.badge}</strong>
-          <p>${item.thesis}</p>
-          <p>${item.body}</p>
-          <div class="topic-advice">${item.advice}</div>
-          <div class="confidence-row">
-            <span>初判贴合度</span>
-            <i><b style="width: ${item.confidence}%"></b></i>
-            <em>${item.confidence}%</em>
-          </div>
-        </article>
-      `
-    )
-    .join("");
+  renderActive(readings[0].key);
 
   tabs.querySelectorAll("button").forEach((button) => {
     button.addEventListener("click", () => {
       tabs.querySelectorAll("button").forEach((item) => item.classList.remove("is-active"));
       button.classList.add("is-active");
-      const card = grid.querySelector(`[data-topic-card="${button.dataset.topic}"]`);
-      card?.scrollIntoView({ behavior: "smooth", block: "center" });
+      renderActive(button.dataset.topic);
     });
   });
 }
@@ -708,7 +846,7 @@ function buildAnnualScore(months, counts) {
   return { annualScore, percentile };
 }
 
-function buildSummaries(months, counts, dayElement, pillars, birthDate, birthCity, birthHour) {
+function buildSummaries(months, counts, dayElement, pillars, birthDate, birthCity, birthHour, trueSolar) {
   const bestMonths = months
     .filter((item) => item.score >= 78)
     .map((item) => item.name)
@@ -723,11 +861,14 @@ function buildSummaries(months, counts, dayElement, pillars, birthDate, birthCit
   const baziText = pillars.map((pillar) => (pillar ? pillarText(pillar) : "时辰未定")).join("、");
   const dayPillar = pillars[2];
   const hourText = birthHour ? `${birthHour}点` : "时辰未详";
+  const correctionText = trueSolar
+    ? `真太阳时校正为 ${trueSolar.date} ${trueSolar.displayTime}，相对钟表时间${trueSolar.correctionMinutes >= 0 ? "增加" : "减少"}${Math.abs(trueSolar.correctionMinutes)}分钟（经度${trueSolar.longitudeCorrection >= 0 ? "+" : ""}${trueSolar.longitudeCorrection}分钟，均时差${trueSolar.equationCorrection >= 0 ? "+" : ""}${trueSolar.equationCorrection}分钟）`
+    : "未做真太阳时校正";
   const monthElements = [...new Set(months.filter((item) => item.score >= 72).map((item) => item.element))].join("、");
   const cautionMonths = lowMonths || "年末";
   const opportunityMonths = bestMonths || "5月、6月";
 
-  const annualNarrative = `命主生于公历 ${birthDate}，${birthCity}起局，${hourText}。四柱排得 ${baziText}。其中${pillarText(dayPillar)}为日柱，${dayPillar.stem}${stemElements[dayPillar.stem]}日元代表命主自身。此局五行以${strongest}气较显，${second}气相随，${weakest}气偏弱，呈现“有主气、有牵引、亦有待补之处”的命局结构。${elementNature[dayElement]}。2026 为丙午流年，丙午可以理解为这一年的外部大环境偏向“火”的能量，火主名声、行动、表达、曝光与速度，所以这一年更容易出现被看见、被催促、被要求拿结果的情形。整体来看，${monthElements || "火土"}之月较能借势，${cautionMonths}则需谨慎言语、合同、人情往来与支出节奏。`;
+  const annualNarrative = `命主生于公历 ${birthDate}，${birthCity}起局，原始记录为${hourText}，${correctionText}。四柱按校正后的太阳时排得 ${baziText}。其中${pillarText(dayPillar)}为日柱，${dayPillar.stem}${stemElements[dayPillar.stem]}日元代表命主自身。此局五行以${strongest}气较显，${second}气相随，${weakest}气偏弱，呈现“有主气、有牵引、亦有待补之处”的命局结构。${elementNature[dayElement]}。2026 为丙午流年，丙午可以理解为这一年的外部大环境偏向“火”的能量，火主名声、行动、表达、曝光与速度，所以这一年更容易出现被看见、被催促、被要求拿结果的情形。整体来看，${monthElements || "火土"}之月较能借势，${cautionMonths}则需谨慎言语、合同、人情往来与支出节奏。`;
 
   const annualDetail = `从全年走势看，2026 年不是单纯求稳的一年，而是“先动后定、先压后开”的一年。流年里“火”的主题偏旺，火可以理解为行动力、表达欲、曝光度和外界压力，容易把命主原本藏在心里的想法、野心、焦虑和执行力一起推出来，所以年初到年中会更明显感到事情变多、责任变重、外界期待变高。若今年有岗位调整、项目变化、合作重组、学习转型或副业尝试，往往不是偶然，而是流年把命局中的变化点引动了。此年最重要的不是盲目冲刺，而是分清哪些机会值得上前，哪些只是短期热闹。${opportunityMonths}可主动争取资源、表达诉求、推动成果落地；${cautionMonths}则要防止情绪化决定、口舌误会、财务松动和关系消耗。全年宜把“节奏、边界、复盘”放在第一位，做事有计划，钱财有账目，人情有分寸，越到后面越能看见这一年的转折价值。`;
 
@@ -816,7 +957,36 @@ function populateControls() {
   }
 
   populateDateSelects();
+  populateCityOptions();
   document.querySelector("#downloadReport").addEventListener("click", downloadReportImage);
+}
+
+function populateCityOptions() {
+  const options = document.querySelector("#cityOptions");
+  const cityInput = document.querySelector("#birthCity");
+  options.innerHTML = cityCatalog
+    .map((item) => `<option value="${item.city}">${item.province} · ${item.city}</option>`)
+    .join("");
+  cityInput.addEventListener("input", updateCityResolve);
+  updateCityResolve();
+}
+
+function updateCityResolve() {
+  const cityInput = document.querySelector("#birthCity");
+  const resolveText = document.querySelector("#cityResolve");
+  const cityInfo = resolveCity(cityInput.value);
+  if (!cityInput.value.trim()) {
+    resolveText.textContent = "输入城市后，将识别省份并用于真太阳时校正";
+    resolveText.classList.remove("is-warning");
+    return;
+  }
+  if (!cityInfo) {
+    resolveText.textContent = "暂未识别该城市，将按东八区标准经线估算；建议输入省会或主要城市";
+    resolveText.classList.add("is-warning");
+    return;
+  }
+  resolveText.textContent = `${cityInfo.province} · ${cityInfo.city}，经度 ${cityInfo.longitude.toFixed(2)}E，将用于真太阳时校正`;
+  resolveText.classList.remove("is-warning");
 }
 
 function populateDateSelects() {
@@ -886,6 +1056,7 @@ function startReading() {
   const birthHour = document.querySelector("#birthHour").value;
   const birthCity = document.querySelector("#birthCity").value.trim();
   const birthGender = document.querySelector('input[name="birthGender"]:checked').value;
+  const cityInfo = resolveCity(birthCity);
 
   if (!birthDate || !birthHour || !birthCity) return;
 
@@ -910,35 +1081,37 @@ function startReading() {
 
   window.setTimeout(() => {
     window.clearInterval(timer);
-    renderReading({ birthDate, birthHour, birthCity, birthGender });
+    renderReading({ birthDate, birthHour, birthCity, birthGender, cityInfo });
     loadingPanel.classList.add("hidden");
     formButton.disabled = false;
     formButton.textContent = "重新起盘";
   }, 2300);
 }
 
-function renderReading({ birthDate, birthHour, birthCity, birthGender }) {
-  const date = parseDate(birthDate);
+function renderReading({ birthDate, birthHour, birthCity, birthGender, cityInfo }) {
+  const trueSolar = getTrueSolarBirth(birthDate, birthHour, cityInfo);
+  const cityDisplay = cityLabel(cityInfo, birthCity);
+  const date = parseDate(trueSolar.date);
   const yearPillar = getYearPillar(date);
   const monthPillar = getMonthPillar(date, yearPillar);
   const dayPillar = getDayPillar(date);
-  const hourPillar = getHourPillar(birthHour, dayPillar);
-  const ziweiChart = getZiweiChart(birthDate, birthHour, birthGender);
+  const hourPillar = getHourPillar(trueSolar.hour, dayPillar);
+  const ziweiChart = getZiweiChart(trueSolar.date, trueSolar.hour, birthGender);
   const pillars = [yearPillar, monthPillar, dayPillar, hourPillar];
   const counts = collectElements(pillars);
   const dayElement = stemElements[dayPillar.stem];
   const months = get2026Months(dayElement);
   const { annualScore, percentile } = buildAnnualScore(months, counts);
-  const summaries = buildSummaries(months, counts, dayElement, pillars, birthDate, birthCity, birthHour);
+  const summaries = buildSummaries(months, counts, dayElement, pillars, birthDate, cityDisplay, birthHour, trueSolar);
 
-  document.querySelector("#profileLine").textContent = `${birthCity}出生 · ${birthDate} · ${birthHour}点 · ${birthGender}命`;
+  document.querySelector("#profileLine").textContent = `${cityDisplay}出生 · ${birthDate} ${birthHour}点 · 真太阳时 ${trueSolar.date} ${trueSolar.displayTime} · ${birthGender}命`;
   document.querySelector("#resultTitle").textContent = `${mainStarsText(getPalace(ziweiChart, "命宫"))}坐命的 2026 年运势`;
   document.querySelector("#annualScore").textContent = annualScore;
   document.querySelector("#annualPercentile").textContent = `超过中国 ${percentile}% 的人`;
   document.querySelector("#annualNarrative").textContent = summaries.annualNarrative;
   document.querySelector("#annualDetail").textContent = summaries.annualDetail;
   renderBazi(pillars);
-  renderZiwei(ziweiChart, birthDate, birthGender);
+  renderZiwei(ziweiChart, trueSolar.date, birthGender);
   renderElements(counts);
   renderMonths(months);
   document.querySelector("#careerSummary").textContent = summaries.careerSummary;

@@ -61,7 +61,9 @@
 
           <label>
             出生城市
-            <input id="birthCity" placeholder="手动输入城市，例如：杭州" autocomplete="off" required />
+            <input id="birthCity" placeholder="手动输入城市，例如：杭州" list="cityOptions" autocomplete="off" required />
+            <datalist id="cityOptions"></datalist>
+            <span class="city-resolve" id="cityResolve">输入城市后，将识别省份并用于真太阳时校正</span>
           </label>
 
           <button type="submit">开始起盘</button>

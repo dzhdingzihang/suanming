@@ -236,6 +236,19 @@ select {
   transform: translateY(-2px);
 }
 
+.city-resolve {
+  display: block;
+  margin-top: 8px;
+  color: rgba(255, 250, 241, 0.62);
+  font-size: 12px;
+  font-weight: 800;
+  line-height: 1.5;
+}
+
+.city-resolve.is-warning {
+  color: #ffc36f;
+}
+
 .form-title {
   display: flex;
   justify-content: space-between;
@@ -903,8 +916,7 @@ button:disabled {
 
 .topic-grid {
   display: grid;
-  grid-template-columns: repeat(2, minmax(0, 1fr));
-  gap: 16px;
+  grid-template-columns: 1fr;
 }
 
 .topic-card,
@@ -912,7 +924,7 @@ button:disabled {
   position: relative;
   overflow: hidden;
   border: 1px solid var(--line);
-  border-radius: 20px;
+  border-radius: 8px;
   background:
     linear-gradient(180deg, rgba(255, 232, 142, 0.075), rgba(8, 9, 16, 0.8));
   box-shadow:
@@ -923,25 +935,18 @@ button:disabled {
 
 .topic-card {
   display: grid;
-  gap: 12px;
-  padding: 22px;
+  gap: 14px;
+  padding: 24px;
 }
 
-.topic-card.is-secondary {
-  background:
-    linear-gradient(180deg, rgba(110, 224, 195, 0.045), rgba(8, 9, 16, 0.8));
-}
-
-.topic-card-head,
-.confidence-row {
+.topic-card-head {
   display: flex;
   justify-content: space-between;
   gap: 12px;
   align-items: center;
 }
 
-.topic-card-head span,
-.confidence-row span {
+.topic-card-head span {
   color: var(--muted);
   font-size: 12px;
   font-weight: 900;
@@ -977,6 +982,32 @@ button:disabled {
   line-height: 1.75;
 }
 
+.topic-detail-list {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 12px;
+}
+
+.topic-detail-list section {
+  display: grid;
+  gap: 8px;
+  padding: 14px;
+  border: 1px solid rgba(255, 244, 182, 0.1);
+  border-radius: 8px;
+  background: rgba(255, 250, 241, 0.04);
+}
+
+.topic-detail-list h5 {
+  margin: 0;
+  color: #fff0a6;
+  font-size: 14px;
+  line-height: 1.2;
+}
+
+.topic-detail-list p {
+  font-size: 14px;
+}
+
 .topic-advice {
   padding: 12px 14px;
   color: rgba(255, 250, 241, 0.88);
@@ -984,32 +1015,6 @@ button:disabled {
   border-radius: 12px;
   background: rgba(110, 224, 195, 0.06);
   font-weight: 700;
-}
-
-.confidence-row {
-  padding-top: 4px;
-}
-
-.confidence-row i {
-  flex: 1;
-  height: 8px;
-  overflow: hidden;
-  border-radius: 999px;
-  background: rgba(255, 244, 182, 0.1);
-}
-
-.confidence-row b {
-  display: block;
-  height: 100%;
-  border-radius: inherit;
-  background: linear-gradient(90deg, var(--accent), var(--gold));
-}
-
-.confidence-row em {
-  color: var(--gold);
-  font-style: normal;
-  font-size: 12px;
-  font-weight: 900;
 }
 
 .calibration-panel {
@@ -1520,6 +1525,7 @@ button:disabled {
   .summary-grid,
   .ziwei-summary-grid,
   .topic-grid,
+  .topic-detail-list,
   .calibration-panel {
     grid-template-columns: 1fr;
   }
